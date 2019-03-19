@@ -2,3 +2,7 @@
 *.iml
 out
 gen
+
+.env
+confs/apache/vhosts/00_status-vhost.conf
+confs/apache/vhosts/htaccess

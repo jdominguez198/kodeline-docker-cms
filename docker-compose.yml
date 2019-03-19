@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  web:
+    image: 'bitnami/apache:${APACHE_VERSION}'
+    ports:
+      - '${WEB_PORT}:8080'
+    volumes:
+      - './confs/apache/vhosts:/bitnami/apache/conf/vhosts:cached'
+      - '${WEB_PATH}:/app:cached'
+    environment:
+      - DISABLE_WELCOME_MESSAGE=1
+
+  app:
+    image: 'bitnami/php-fpm:${PHP_VERSION}'
+    volumes:
+      - './confs/php-fpm/extra-config.ini:/opt/bitnami/php/etc/conf.d/zzzz.ini:cached'
+      - '${WEB_PATH}:/app:cached'

@@ -7,13 +7,33 @@ services:
     ports:
       - '${WEB_PORT}:8080'
     volumes:
-      - './confs/apache/vhosts:/bitnami/apache/conf/vhosts:cached'
+      - './configs/apache/vhosts:/bitnami/apache/conf/vhosts:cached'
       - '${WEB_PATH}:/app:cached'
     environment:
       - DISABLE_WELCOME_MESSAGE=1
 
   app:
     image: 'bitnami/php-fpm:${PHP_VERSION}'
+    depends_on:
+      - web
     volumes:
-      - './confs/php-fpm/extra-config.ini:/opt/bitnami/php/etc/conf.d/zzzz.ini:cached'
+      - './configs/php-fpm/extra-config.ini:/opt/bitnami/php/etc/conf.d/zzzz.ini:cached'
       - '${WEB_PATH}:/app:cached'
+
+  front-tools:
+    restart: 'no'
+    image: 'cms-front-tools:1.0'
+    depends_on:
+      - app
+    volumes:
+      - '${WEB_PATH}:/app:cached'
+      - './configs/gulp/tools-config.json:/app-front-tools/cnf/config.json:cached'
+    build:
+      context: .
+      dockerfile: ./images/gulp/Dockerfile
+      args:
+        - GULP_RUN_SCRIPT=${GULP_RUN_SCRIPT}
+        - GULP_REPOSITORY=${GULP_REPOSITORY}
+    ports:
+      - '${GULP_PORT}:${GULP_PORT}'
+      - '${GULP_ADMIN_PORT}:${GULP_ADMIN_PORT}'

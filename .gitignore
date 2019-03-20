@@ -4,5 +4,6 @@ out
 gen
 
 .env
-confs/apache/vhosts/00_status-vhost.conf
-confs/apache/vhosts/htaccess
+configs/apache/vhosts/00_status-vhost.conf
+configs/apache/vhosts/htaccess
+configs/gulp/tools-config.json

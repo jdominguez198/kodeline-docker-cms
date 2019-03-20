@@ -21,19 +21,19 @@ services:
       - '${WEB_PATH}:/app:cached'
 
   front-tools:
-    restart: 'no'
-    image: 'cms-front-tools:1.0'
-    depends_on:
-      - app
-    volumes:
-      - '${WEB_PATH}:/app:cached'
-      - './configs/gulp/tools-config.json:/app-front-tools/cnf/config.json:cached'
+    image: 'kodeline/front-tools:1.0'
     build:
       context: .
       dockerfile: ./images/gulp/Dockerfile
       args:
         - GULP_RUN_SCRIPT=${GULP_RUN_SCRIPT}
         - GULP_REPOSITORY=${GULP_REPOSITORY}
+    restart: 'no'
+    depends_on:
+      - app
+    volumes:
+      - '${WEB_PATH}:/app:cached'
+      - './configs/gulp/tools-config.json:/app-front-tools/cnf/config.json:cached'
     ports:
       - '${GULP_PORT}:${GULP_PORT}'
       - '${GULP_ADMIN_PORT}:${GULP_ADMIN_PORT}'

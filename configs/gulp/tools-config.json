@@ -1,6 +1,6 @@
 {
   "browsersync_port": 8101,
-  "browsersync_admin_port": 8102,
+  "browsersync_admin_port": 3001,
   "public_url": "http://noytral.kodeline/",
   "site_proxy_url": "http://web:8080/",
   "site_base_path": "/app/",

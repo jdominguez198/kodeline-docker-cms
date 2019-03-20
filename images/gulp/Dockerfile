@@ -19,5 +19,4 @@ WORKDIR ${TOOLSET_FOLDER}
 
 RUN npm install
 
-#CMD ["gulp"]
-CMD ["tail", "-f", "/dev/null"]
+CMD ["gulp"]

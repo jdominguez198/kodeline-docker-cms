@@ -18,12 +18,14 @@ You have an example file for both configuration files under its folders.
 
 ## Changelog
 
+### v1.1.0
+
+> Add CLI to setup config & start/stop stack
+
 ### v1.0.0
 
 > First working version.
 
 ## TODO
-
-> Make a CLI for basic setup using arguments and/or a wizard
 
 > Try to use nginx instead of apache

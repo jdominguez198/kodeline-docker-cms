@@ -1,9 +1,9 @@
 # kodeline-docker-cms
 
-Docker compose based in [Bitnami](https://github.com/bitnami/)'s images to use my own stack for Prestashop and Wordpress development.  
+Docker compose to use my own stack for Prestashop and Wordpress development.  
 It is based on the images:
 - [bitnami-docker-apache](https://github.com/bitnami/bitnami-docker-apache)
-- [bitnami-docker-php-fpm](https://github.com/bitnami/bitnami-docker-php-fpm)
+- [dockergento-php-fpm](https://github.com/ModestCoders/dockerfiles/tree/master/php/7.1-fpm)
  
  
 Also, is added a node container to allow using Gulp + BrowserSync with my own image of [front-tools](https://github.com/jdominguez198/kodeline-toolset)
@@ -17,6 +17,10 @@ There is two configuration files:
 You have an example file for both configuration files under its folders.
 
 ## Changelog
+
+### v1.2.0
+
+> Add enable/disable xdebug for local development (disabled by default)
 
 ### v1.1.0
 

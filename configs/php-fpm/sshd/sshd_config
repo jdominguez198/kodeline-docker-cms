@@ -1,0 +1,10 @@
+PasswordAuthentication no
+PermitRootLogin yes
+Subsystem sftp internal-sftp
+Match Group sftp
+    ChrootDirectory %h
+    X11Forwarding no
+    AllowTcpForwarding no
+    AllowAgentForwarding no
+    PermitTunnel no
+    ForceCommand internal-sftp

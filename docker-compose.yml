@@ -13,12 +13,20 @@ services:
       - DISABLE_WELCOME_MESSAGE=1
 
   app:
-    image: 'bitnami/php-fpm:${PHP_VERSION}'
+    image: 'kodeline/app-php-fpm:1.0'
+    build:
+      context: .
+      dockerfile: ./images/php-fpm/Dockerfile
+      args:
+        - PHP_VERSION=${PHP_VERSION}
     depends_on:
       - web
+    ports:
+      - '${SSH_PORT}:22'
     volumes:
-      - './configs/php-fpm/extra-config.ini:/opt/bitnami/php/etc/conf.d/zzzz.ini:cached'
       - '${WEB_PATH}:/app:cached'
+    environment:
+      - APP_DEBUG_MODE=${APP_DEBUG_MODE}
 
   front-tools:
     image: 'kodeline/front-tools:1.0'
